@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="terminal-screen">
+        <div class="terminal-container">
+            <span id="typed-text"></span><span class="cursor">_</span>
+        </div>
+    </div>
+
+    <div id="cake-screen" class="hidden">
+        <div class="scene-container">
+            
+            <img src="C:\Users\UserGPC\Downloads\FONDITO.jpg" alt="Fondo Ciudad" class="bg-layer">
+            
+            <div class="photo-frame frame-left">
+                <img src="C:\Users\UserGPC\Downloads\foto1.jpg" alt="Foto Recuerdo 1">
+            </div>
+
+            <div class="photo-frame frame-right">
+                <img src="C:\Users\UserGPC\Downloads\foto2.jpg" alt="Foto Recuerdo 2">
+            </div>
+            
+            <div class="photo-frame frame-downright">
+                <img src="C:\Users\UserGPC\Downloads\foto3.png" alt="Foto Recuerdo 3">
+            </div>
+
+            <div class="photo-frame frame-downleft">
+                <img src="C:\Users\UserGPC\Downloads\foto4.png" alt="Foto Recuerdo 4">
+            </div>
+
+            <img src="C:\Users\UserGPC\Downloads\pastelito.png" alt="Pastel" class="cake-layer">
+
+            <div id="letter-trigger" class="letter-item">
+                📩
+            </div>
+
+            <div id="message-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>¡Feliz Cumpleaños!</h2>
+                    <p>
+                        Este programa es para ti.<br>
+                        Espero que tengas un día increíble lleno de alegría.
+                        <br><br>
+                        El fondo es ese lugar especial donde nos conocimos... 🥺
+                        <br><br>
+                        <strong>Te quiero mucho.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="subtitle">
+                EL FONDO ES UN LUGAR BONITO AL QUE HAS IDO🥺<br>
+                <span style="font-size: 0.8em">(Toca la carta)</span>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

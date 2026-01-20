@@ -1,0 +1,210 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+    font-family: 'VT323', monospace;
+}
+
+/* --- ESCENA 1: TERMINAL --- */
+#terminal-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 50px;
+    color: #f582da; /* Verde Hacker */
+    font-size: 3.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transition: opacity 1s ease-in-out;
+}
+
+.terminal-container {
+    max-width: 800px;
+    white-space: pre-wrap;
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- ESCENA 2: EL PASTEL --- */
+#cake-screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    opacity: 0; /* Invisible al principio */
+    transition: opacity 2s ease-in-out;
+    display: none; /* No ocupa espacio al principio */
+}
+
+/* Clase para activar la visibilidad */
+#cake-screen.visible {
+    opacity: 1;
+    display: block;
+}
+
+.scene-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- CAPAS DE IMÁGENES --- */
+.bg-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: relative;
+    z-index: 1;
+}
+
+.cake-layer {
+    position: absolute;
+    width: 35%; /* Ajusta el tamaño del pastel */
+    max-width: 700px;
+    z-index: 3;
+    bottom: -10px; /* Ajusta posición vertical */
+}
+
+/* --- MARCOS DE FOTOS (FRAMES) --- */
+.photo-frame {
+    position: absolute;
+    z-index: 2; /* Detrás del pastel, delante del fondo */
+    background-color: #e0a000; /* Marco blanco */
+    padding: 12px 12px 30px 12px; /* Efecto Polaroid (más borde abajo) */
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    width: 160px; /* Tamaño del marco */
+    transition: transform 0.3s ease;
+}
+
+.photo-frame img {
+    width: 100%;
+    display: block;
+    border: 1px solid #e0a000;
+}
+
+/* Posición Marco Izquierdo */
+.frame-left {
+    bottom: 55%;
+    left: 25%;
+    transform: rotate(-8deg) perspective(600px) rotateY(15deg);
+}
+
+/* Posición Marco Derecho */
+.frame-right {
+    bottom: 55%;
+    right: 25%;
+    transform: rotate(8deg) perspective(600px) rotateY(-15deg);
+}
+
+.frame-downright{
+    bottom: 20%;
+    right: 20%;
+    transform: rotate(8deg) perspective(600px) rotateY(-15deg);
+}
+
+.frame-downleft{
+    bottom: 20%;
+    left: 20%;
+    transform: rotate(-8deg) perspective(600px) rotateY(15deg);
+}
+.photo-frame:hover {
+    z-index: 60; /* Traer al frente al pasar el mouse */
+    transform: scale(1.8) rotate(0deg);
+}
+
+/* --- CARTA (EL SOBRE) --- */
+.letter-item {
+    position: absolute;
+    z-index: 4;
+    bottom: 15%;
+    right: 32%; /* Posición en la mesa */
+    font-size: 4rem;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.5));
+    transition: transform 0.3s;
+}
+
+.letter-item:hover {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+/* --- MODAL (MENSAJE SECRETO) --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none; /* No se puede clicar si está invisible */
+    transition: opacity 0.4s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: #fffdf0; /* Color papel */
+    padding: 30px;
+    border-radius: 8px;
+    width: 85%;
+    max-width: 450px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-btn:hover { color: #000; }
+
+/* --- SUBTÍTULO --- */
+.subtitle {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: left;
+    color: #f582da;
+    font-family: sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    z-index: 10;
+    font-size: 15px;
+}
